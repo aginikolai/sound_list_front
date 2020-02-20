@@ -1,12 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ApolloClient } from 'apollo-client';
+import { ApolloProvider } from 'react-apollo';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloLink } from 'apollo-link';
+import { withClientState } from 'apollo-link-state';
+
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import App from './components/App/App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const cache = new InMemoryCache();
+const stateLink = withClientState({
+  cache
+});
+const link = ApolloLink.from([stateLink]);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const client = new ApolloClient({
+  uri: 'http://localhost:2222/graphql',
+  cache,
+  link
+});
+
+ReactDOM.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>
+  , document.getElementById('root'));
