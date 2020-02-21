@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ecc5be-216b-4805-9d1b-0e96cdd55db6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/App/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/YouTube.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/PlayList/PlayList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/PlayList/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/queries/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/YouTube.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/YouTube/YouTube.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/serviceWorker.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,13 +37,15 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/YouTube" />
+      <recent name="$PROJECT_DIR$/src/components/App" />
       <recent name="$PROJECT_DIR$/backend" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/App" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
@@ -88,7 +86,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581934844803</updated>
-      <workItem from="1581934846573" duration="12224000" />
+      <workItem from="1581934846573" duration="12929000" />
+      <workItem from="1582276184793" duration="5999000" />
     </task>
     <servers />
   </component>
@@ -96,21 +95,25 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1419" height="137" key="GridCell.Tab.0.bottom" timestamp="1582192416905">
+    <state width="1419" height="137" key="GridCell.Tab.0.bottom" timestamp="1582279969724">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="137" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1582192416905" />
-    <state width="1419" height="137" key="GridCell.Tab.0.center" timestamp="1582192416903">
+    <state width="1419" height="137" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1582279969724" />
+    <state width="1419" height="137" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1582276092791" />
+    <state width="1419" height="137" key="GridCell.Tab.0.center" timestamp="1582279969722">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="137" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1582192416903" />
-    <state width="1419" height="137" key="GridCell.Tab.0.left" timestamp="1582192416902">
+    <state width="1419" height="137" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1582279969722" />
+    <state width="1419" height="137" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1582276092789" />
+    <state width="1419" height="137" key="GridCell.Tab.0.left" timestamp="1582279969721">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="137" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1582192416902" />
-    <state width="1419" height="137" key="GridCell.Tab.0.right" timestamp="1582192416904">
+    <state width="1419" height="137" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1582279969721" />
+    <state width="1419" height="137" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1582276092788" />
+    <state width="1419" height="137" key="GridCell.Tab.0.right" timestamp="1582279969723">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="137" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1582192416904" />
+    <state width="1419" height="137" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1582279969723" />
+    <state width="1419" height="137" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1582276092790" />
   </component>
 </project>
