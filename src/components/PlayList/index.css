@@ -1,0 +1,27 @@
+.playlist_area {
+    width: 35vw;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.playlist_area__div {
+    width: 100%;
+    border: 1px solid wheat;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.playlist_area__p {
+    margin: 0;
+    cursor: pointer;
+}
+
+.playlist_area__p:hover {
+    color: antiquewhite;
+}
+
+.new_playlist {
+    margin-top: 20px;
+}

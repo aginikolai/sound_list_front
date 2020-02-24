@@ -7,3 +7,21 @@ export const GET_ALL_SONGS = gql`
     }
   }
 `;
+
+export const GET_ALL_LISTS = gql`
+  query {
+    getAllLists {
+      name
+    }
+  }
+`;
+
+// Mutations
+
+export const NEW_PLAYLIST = gql`
+  mutation($name: String!) {
+    addList(name: $name) {
+      name
+    }
+  }
+`;
