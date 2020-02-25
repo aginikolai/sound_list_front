@@ -16,6 +16,17 @@ export const GET_ALL_LISTS = gql`
   }
 `;
 
+export const GET_PAY_LIST = gql`
+  query($playList: String!) {
+    getPlayList(playList: $playList) {
+      _id
+      name
+      playList
+      link
+    }
+  }
+`;
+
 // Mutations
 
 export const NEW_PLAYLIST = gql`

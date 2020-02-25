@@ -1,0 +1,19 @@
+.songs_area {
+    width: 50vw;
+    margin-bottom: 20px;
+}
+
+.songs_area_title {
+    display: flex;
+    width: 100%;
+}
+
+.songs_area__div {
+    width: 45%;
+    border: 1px solid wheat;
+    padding: 3px;
+}
+
+.songs_area__div p {
+    margin: 0;
+}
