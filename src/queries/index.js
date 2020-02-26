@@ -23,6 +23,7 @@ export const GET_PAY_LIST = gql`
       name
       playList
       link
+      author
     }
   }
 `;
@@ -33,6 +34,18 @@ export const NEW_PLAYLIST = gql`
   mutation($name: String!) {
     addList(name: $name) {
       name
+    }
+  }
+`;
+
+export const NEW_SONG = gql`
+  mutation($name: String!, $author: String!, $link: String!, $playList: String!) {
+    addSong(name: $name, playList: $playList, link: $link, author: $author) {
+      _id
+      name
+      playList
+      link
+      author
     }
   }
 `;
