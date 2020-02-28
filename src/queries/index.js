@@ -49,3 +49,11 @@ export const NEW_SONG = gql`
     }
   }
 `;
+
+export const DELETE_SONG = gql`
+  mutation($id: ID!) {
+    deleteSong(_id: $id) {
+      _id
+    }
+  }
+`;

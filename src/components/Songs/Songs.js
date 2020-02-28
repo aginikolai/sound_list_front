@@ -2,12 +2,18 @@ import React, {useState} from 'react';
 import { useQuery } from "@apollo/react-hooks";
 import { Mutation } from 'react-apollo';
 
-import { GET_PAY_LIST, NEW_SONG } from "../../queries";
+import { GET_PAY_LIST, NEW_SONG, DELETE_SONG } from "../../queries";
 import './index.css';
 
 const Songs = (props) => {
   const [ openAdd, setOpenAdd ] = useState(false);
   const [newSong, setNewSong] = useState({
+    name: '',
+    author: '',
+    link: ''
+  });
+  const [songId, setSongId] = useState('');
+  const [changeSong, setChangeSong] = useState({
     name: '',
     author: '',
     link: ''
@@ -26,15 +32,46 @@ const Songs = (props) => {
     setOpenAdd(false);
   };
 
+  const deletingSong = (deleteSong) => {
+    // eslint-disable-next-line no-restricted-globals
+    if(confirm('Вы уверенны, что хотите удалить эту песню?')) {
+      deleteSong();
+    }
+  };
+
+  const settingSong = (item) => {
+    setSongId(item._id);
+    setChangeSong({
+      author: item.author,
+      name: item.name,
+      link: item.link
+    })
+  };
+
+  const changingSong = (event) => setChangeSong({...changeSong, [event.target.name]: event.target.value});
+
   if (loading) return <p>Loading</p>;
   const songs = data.getPlayList.map(item => (
-    <div className="songs_area_title" key={item._id}>
-      <div className="songs_area__div" style={{width: '15%'}}><p>{item.author}</p></div>
-      <div className="songs_area__div" style={{width: '20%'}}><p>{item.name}</p></div>
-      <div className="songs_area__div"><p>{item.link}</p></div>
-      <div className="songs_area__div" style={{width: '7vw'}}><button>Изменить</button></div>
-      <div className="songs_area__div" style={{width: '7vw'}}><button>Удалить</button></div>
-    </div>
+    <Mutation mutation={DELETE_SONG} variables={{id: item._id}} refetchQueries={[{query: GET_PAY_LIST, variables: {playList: props.playlist}}]} key={item._id}>
+      { (deleteSong) => (
+        <div className="songs_area_title" >
+          { songId === item._id
+            ? <input type="text" name="author" required defaultValue={item.author} style={{width: '15%'}} onChange={(event) => changingSong(event)}/>
+            : <div className="songs_area__div" style={{width: '15%'}}><p>{item.author}</p></div>
+          }
+          { songId === item._id
+            ? <input type="text" name="name" required defaultValue={item.name} style={{width: '20%'}} onChange={(event) => changingSong(event)}/>
+            :  <div className="songs_area__div" style={{width: '20%'}}><p>{item.name}</p></div>
+          }
+          { songId === item._id
+            ? <input type="text" name="link" required placeholder={item.link} style={{width: '60%'}} onChange={(event) => changingSong(event)}/>
+            :  <div className="songs_area__div"><p>{item.link}</p></div>
+          }
+          <div className="songs_area__div" style={{width: '7vw'}}><button onClick={() => settingSong(item)}>Изменить</button></div>
+          <div className="songs_area__div" style={{width: '7vw'}}><button onClick={() => deletingSong(deleteSong)}>Удалить</button></div>
+        </div>
+      )}
+    </Mutation>
   ));
   if (props.playlist !== '') {
     return (
@@ -45,11 +82,11 @@ const Songs = (props) => {
             <h5>{props.playlist}</h5>
           </div>
           <div className="songs_area_title">
-            <div className="songs_area__div" style={{width: '15%'}}><p>Автор</p></div>
-            <div className="songs_area__div" style={{width: '20%'}}><p>Название</p></div>
-            <div className="songs_area__div"><p>Ссылка</p></div>
-            <div className="songs_area__div" style={{width: '7vw', fontSize: '16px'}}><p>Изменить</p></div>
-            <div className="songs_area__div" style={{width: '7vw', fontSize: '16px'}}><p>Удалить</p></div>
+            <div className="songs_area__div" style={{width: '15%'}}><p style={{fontWeight: 'bold'}}>Автор</p></div>
+            <div className="songs_area__div" style={{width: '20%'}}><p style={{fontWeight: 'bold'}}>Название</p></div>
+            <div className="songs_area__div"><p style={{fontWeight: 'bold'}}>Ссылка</p></div>
+            <div className="songs_area__div" style={{width: '7vw', fontSize: '16px'}}><p style={{fontWeight: 'bold'}}>Изменить</p></div>
+            <div className="songs_area__div" style={{width: '7vw', fontSize: '16px'}}><p style={{fontWeight: 'bold'}}>Удалить</p></div>
           </div>
           {songs}
         </div>
