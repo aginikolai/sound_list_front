@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import { Mutation } from 'react-apollo';
 
-import { GET_PAY_LIST, NEW_SONG, DELETE_SONG } from "../../queries";
+import { GET_PAY_LIST, NEW_SONG, DELETE_SONG, UPDATE_SONG } from "../../queries";
 import './index.css';
 
 const Songs = (props) => {
@@ -23,7 +23,12 @@ const Songs = (props) => {
     variables: {playList: props.playlist}
   });
 
+  const [updateSong, info] = useMutation(UPDATE_SONG, {
+    refetchQueries: [{query: GET_PAY_LIST, variables: {playList: props.playlist}}]
+  });
+
   const { name, author, link } = newSong;
+
   const addingSong = (event, addSong) => {
     event.preventDefault();
     addSong({
@@ -48,6 +53,22 @@ const Songs = (props) => {
     })
   };
 
+  const updatingSong = async (item) => {
+    // eslint-disable-next-line no-restricted-globals
+    if(confirm('Внести изменения?')) {
+      await updateSong({
+        variables: {
+          id: item._id,
+          name: changeSong.name,
+          author: changeSong.author,
+          link: changeSong.link,
+          playList: props.playlist
+        }
+      });
+    }
+    await setSongId('');
+  };
+
   const changingSong = (event) => setChangeSong({...changeSong, [event.target.name]: event.target.value});
 
   if (loading) return <p>Loading</p>;
@@ -67,7 +88,13 @@ const Songs = (props) => {
             ? <input type="text" name="link" required placeholder={item.link} style={{width: '60%'}} onChange={(event) => changingSong(event)}/>
             :  <div className="songs_area__div"><p>{item.link}</p></div>
           }
-          <div className="songs_area__div" style={{width: '7vw'}}><button onClick={() => settingSong(item)}>Изменить</button></div>
+          { songId === item._id
+            ? <div className="songs_area__div" style={{width: '7vw'}}>
+              <button style={{marginRight: '5px'}} onClick={() => updatingSong(item)}><span>&#9989;</span></button>
+              <button onClick={() => setSongId('')}><span>&#x274C;</span></button>
+            </div>
+            : <div className="songs_area__div" style={{width: '7vw'}}><button onClick={() => settingSong(item)}>Изменить</button></div>
+          }
           <div className="songs_area__div" style={{width: '7vw'}}><button onClick={() => deletingSong(deleteSong)}>Удалить</button></div>
         </div>
       )}

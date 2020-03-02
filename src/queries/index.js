@@ -57,3 +57,14 @@ export const DELETE_SONG = gql`
     }
   }
 `;
+
+export const UPDATE_SONG = gql`
+  mutation ($id: ID!, $name: String!, $playList: String!, $link: String!, $author: String!) {
+    changeSong(_id: $id, name: $name, author: $author, link: $link, playList: $playList) {
+      _id,
+      name,
+      author,
+      link
+    }
+  }
+`;
