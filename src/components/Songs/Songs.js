@@ -23,7 +23,7 @@ const Songs = (props) => {
     variables: {playList: props.playlist}
   });
 
-  const [updateSong, info] = useMutation(UPDATE_SONG, {
+  const [updateSong] = useMutation(UPDATE_SONG, {
     refetchQueries: [{query: GET_PAY_LIST, variables: {playList: props.playlist}}]
   });
 

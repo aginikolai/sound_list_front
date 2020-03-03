@@ -31,3 +31,7 @@
 .wrapper {
     margin: 20px;
 }
+
+.playlist__div {
+    display: flex;
+}

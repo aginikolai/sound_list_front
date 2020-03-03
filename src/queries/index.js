@@ -4,6 +4,7 @@ export const GET_ALL_SONGS = gql`
   query {
     getAllSongsLists {
       name
+      _id
     }
   }
 `;
@@ -12,6 +13,7 @@ export const GET_ALL_LISTS = gql`
   query {
     getAllLists {
       name
+      _id
     }
   }
 `;
@@ -33,7 +35,8 @@ export const GET_PAY_LIST = gql`
 export const NEW_PLAYLIST = gql`
   mutation($name: String!) {
     addList(name: $name) {
-      name
+      name,
+      _id
     }
   }
 `;
@@ -65,6 +68,14 @@ export const UPDATE_SONG = gql`
       name,
       author,
       link
+    }
+  }
+`;
+
+export const DELETE_PLAYLIST = gql`
+  mutation($id: ID!) {
+    deleteList(_id: $id) {
+      _id
     }
   }
 `;
