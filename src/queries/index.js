@@ -79,3 +79,11 @@ export const DELETE_PLAYLIST = gql`
     }
   }
 `;
+
+export const SIGN_IN = gql`
+  mutation($username: String!, $password: String!) {
+    signinUser(username: $username, password: $password) {
+      token
+    }
+  }
+`;

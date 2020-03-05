@@ -27,7 +27,7 @@ const PlayList = () => {
 
   if (lists.loading) return <p>Loading...</p>;
   const playlists = lists.data.getAllLists.map((item, i) => (
-    <div className="playlist__div">
+    <div className="playlist__div" key={i}>
       <div
         className="playlist_area__div"
         key={i}
