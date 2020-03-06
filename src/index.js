@@ -11,7 +11,26 @@ const cache = new InMemoryCache();
 
 const client = new ApolloClient({
   uri: 'http://localhost:2222/graphql',
-  cache
+  cache,
+  fetchOptions: {
+    credentials: 'include'
+  },
+  request: operation => {
+    const token = localStorage.getItem('token');
+    operation.setContext({
+      headers: {
+        authorization: token
+      }
+    })
+  },
+  onError: ({ networkError}) => {
+    if (networkError) {
+      console.log('Network error', networkError);
+      if (networkError.statusCode === 401) {
+        localStorage.setItem('token', null);
+      }
+    }
+  }
 });
 
 ReactDOM.render(

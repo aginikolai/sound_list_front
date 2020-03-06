@@ -30,6 +30,14 @@ export const GET_PAY_LIST = gql`
   }
 `;
 
+export const GET_CURRENT_USER = gql`
+  query {
+    getCurrentUser {
+      username
+    }
+  }
+`;
+
 // Mutations
 
 export const NEW_PLAYLIST = gql`
