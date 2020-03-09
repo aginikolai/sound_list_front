@@ -12,9 +12,9 @@ function App({refetch, user}) {
     <Router>
       <Switch>
         <Route path="/" exact component={ Main } />
-        <Route path="/admin" exact render={() => <PlayListComponent user={user} />} />
-        <Route patn="/signin" exact render={() => <AdminPanel refetch={refetch} /> } />
-        <Route render={() => <p>not found</p>} />
+        <Route path="/admin" render={() => <PlayListComponent user={user} />} />
+        <Route path="/signin" render={() => <AdminPanel refetch={refetch} /> } />
+        <Route render={() => <p>Not Found!</p>}/>
       </Switch>
     </Router>
   );
